@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useReducer } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import First from './components/first'
@@ -33,28 +33,81 @@ import HookCounterThree from './components/hooks/HookCounterThree'
 import HookCounterFour from './components/hooks/HookCounterFour'
 import { UserProvider } from './components/userContext'
 import Container from './container'
+// useReducer
+import CounterOne from './components/useReducer/CounterOne'
+import CounterTwo from './components/useReducer/CounterTwo'
+import CounterThree from './components/useReducer/CounterThree'
+
+import ComponentA_R from './components/useReducer/ComponentA_R'
+import ComponentB_R from './components/useReducer/ComponentB_R'
+import ComponentC_R from './components/useReducer/ComponentC_R'
+
+import DataFetchingOne from './components/useReducer/DataFetchingOne'
+import DataFetchingTwo from './components/useReducer/DataFetchingTwo'
+
+//useCallBack
+import ParentComponentCall from './components/useCallBack/ParentComponent'
+
+
+
 
 
 // ParentComp for purecomponent
 //ClickCounter and HoverCounter for HOC demo
+
+//UseReducer for multiple component passind state
+const initialState = 0
+const reducer = (state, action) => {
+	switch (action) {
+		case 'increment':
+			return state + 1
+		case 'decrement':
+			return state - 1
+		case 'reset':
+			return initialState
+		default:
+			return state
+	}
+}
+
+export const CountContext = React.createContext()
 
 //UseContext example
 export const UserContext = React.createContext()
 export const SecondContext = React.createContext()
 
 function  App () {
+  const [count, dispatch] = useReducer(reducer, initialState)
     return (
       <div className="App">
-
-        <UserContext.Provider value={"Pankaj"}>
+        {/* <UserContext.Provider value={"Pankaj"}>
           <SecondContext.Provider value={"Bhardwaj"}>
             <ComponentContextC />
           </SecondContext.Provider>
-        </UserContext.Provider>
+        </UserContext.Provider> */}
+
+<CountContext.Provider
+			value={{ countState: count, countDispatch: dispatch }}
+		>
+				{/* <CounterOne /> */}
+				{/* <CounterTwo /> */}
+				{/* <CounterThree /> */}
+				{/* {count} */}
+        count --- {count}
+				<ComponentA_R />
+				<ComponentB_R />
+				<ComponentC_R />
+		</CountContext.Provider>
+
+    <ParentComponentCall/>
+
+        {/* <CounterOne/>
+        <CounterTwo/> */}
+        {/* <CounterThree/> */}
       {/* <Container/> */}
         {/* <HookCounter / > */}
         {/* <HookCounterTwo / > */}
-        <DataFetching/>
+        {/* <DataFetching/> */}
         {/* <ComponentC /> */}
         {/* <FragmentDemo /> */}
         {/* <ClickCounter name='pankaj'/>
