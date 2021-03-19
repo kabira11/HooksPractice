@@ -3,6 +3,11 @@ import Count from './Count'
 import Button from './Button'
 import Title from './Title'
 
+// useCallback is a hook that will return a memoized version of the callback function 
+// that only changes if one of the dependencies has changed.
+// why it is used --
+// It is useful when passing callbacks
+// to optimized child component 
 function ParentComponent() {
 	const [age, setAge] = useState(25)
 	const [salary, setSalary] = useState(50000)

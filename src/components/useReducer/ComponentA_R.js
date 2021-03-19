@@ -1,6 +1,9 @@
 import React, {useContext} from 'react'
 import { CountContext } from '../../App';
 
+// useReducer -- Local state management
+// Share state between components -- Global state management --> useReducer + useContext we can acheive 
+
 function ComponentA_R() {
   const countContext = useContext(CountContext)
   return (

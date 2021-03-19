@@ -1,5 +1,6 @@
 import React, {useReducer} from 'react'
-
+// This is first video for useReducer
+// UseReducer accept two arguments
 const initialState = 0
 const reducer = (state , action) => {
     switch(action) {

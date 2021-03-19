@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react'
 
+// Multiple useReducer hooks
 const initialState = 0
 const reducer = (state, action) => {
 	switch (action) {

@@ -33,6 +33,7 @@ import HookCounterThree from './components/hooks/HookCounterThree'
 import HookCounterFour from './components/hooks/HookCounterFour'
 import { UserProvider } from './components/userContext'
 import Container from './container'
+import RefsDemo from './components/RefsDemo'
 // useReducer
 import CounterOne from './components/useReducer/CounterOne'
 import CounterTwo from './components/useReducer/CounterTwo'
@@ -47,6 +48,8 @@ import DataFetchingTwo from './components/useReducer/DataFetchingTwo'
 
 //useCallBack
 import ParentComponentCall from './components/useCallBack/ParentComponent'
+//useMemo
+import CounterMemo from './components/useMemo/Counter'
 
 
 
@@ -56,6 +59,11 @@ import ParentComponentCall from './components/useCallBack/ParentComponent'
 //ClickCounter and HoverCounter for HOC demo
 
 //UseReducer for multiple component passind state
+
+
+// HOC
+import ClickCounter1 from './components/Hoc_example/ClickCounter'
+import HoverCounter1 from './components/Hoc_example/HoverCounter'
 const initialState = 0
 const reducer = (state, action) => {
 	switch (action) {
@@ -69,7 +77,7 @@ const reducer = (state, action) => {
 			return state
 	}
 }
-
+//UseContext example
 export const CountContext = React.createContext()
 
 //UseContext example
@@ -80,26 +88,28 @@ function  App () {
   const [count, dispatch] = useReducer(reducer, initialState)
     return (
       <div className="App">
+        {/* <CounterMemo></CounterMemo> */}
+        {/* <UseEffectCounterTwo/> */}
         {/* <UserContext.Provider value={"Pankaj"}>
           <SecondContext.Provider value={"Bhardwaj"}>
             <ComponentContextC />
           </SecondContext.Provider>
         </UserContext.Provider> */}
 
-<CountContext.Provider
+{/* <CountContext.Provider
 			value={{ countState: count, countDispatch: dispatch }}
-		>
+		> */}
 				{/* <CounterOne /> */}
 				{/* <CounterTwo /> */}
 				{/* <CounterThree /> */}
 				{/* {count} */}
-        count --- {count}
+        {/* count --- {count}
 				<ComponentA_R />
 				<ComponentB_R />
 				<ComponentC_R />
-		</CountContext.Provider>
+		</CountContext.Provider> */}
 
-    <ParentComponentCall/>
+    {/* <ParentComponentCall/> */}
 
         {/* <CounterOne/>
         <CounterTwo/> */}
@@ -114,7 +124,8 @@ function  App () {
         <HoverCounter /> */}
         {/* <LifecycleA /> */}
         {/* <FormTest /> */}
-        {/* <ParentComp /> */}
+        {/* <ParentComp />
+        <RefsDemo/> */}
         {/* <ParentComponent /> */}
         {/* <PersonList /> */}
         {/* <LoginForm /> */}
@@ -139,6 +150,11 @@ function  App () {
         {/* <Welcome name = 'Pankaj' sirName = 'Bhardwaj'/> */}
         {/* <Second />
         <Hello /> */}
+
+
+      {/*Hoc component example*/}
+      <ClickCounter1 name="Pankaj"/>
+      <HoverCounter1 name="PKB"/>
       </div>
     );
 }
